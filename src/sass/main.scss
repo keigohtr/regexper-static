@@ -56,24 +56,9 @@ ul.inline-list {
   }
 }
 
-#deprecation-notice {
-  @include linear-gradient(top, $green, $dark-green);
-  padding: rhythm(1);
-  margin: rhythm(1);
-  @include box-shadow;
-  @include clearfix;
-
-  h1 {
-    font-family: 'Bangers', 'cursive';
-  }
-
-  p {
-    margin-top: rhythm(1);
-  }
-}
-
 header {
-  @include linear-gradient(top, $green, $dark-green);
+  background: $green;
+  background: linear-gradient(to bottom, $green 0%, $dark-green 100%);
   padding: rhythm(1);
   @include box-shadow;
   @include clearfix;
@@ -108,6 +93,7 @@ header {
 
 #content {
   padding: rhythm(1);
+  display: block;
 
   .copy {
     background-color: $tan;
@@ -241,12 +227,17 @@ header {
     position: relative;
     @include clearfix;
 
+    form {
+      overflow: hidden;
+    }
+
     textarea {
       @include adjust-font-size-to($base-font-size);
       border: 0 none;
       outline: none;
       background: $tan;
       padding: 0 0.5em;
+      margin-bottom: 0.25em;
       width: 100% !important; // "!important" prevents user changing width
       box-sizing: border-box;
       font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
@@ -260,7 +251,8 @@ header {
       @include adjust-font-size-to($base-font-size);
       width: 100px;
       border: 0 none;
-      @include linear-gradient(top, $green, $dark-green);
+      background: $green;
+      background: linear-gradient(to bottom, $green 0%, $dark-green 100%);
       float: left;
       cursor: pointer;
     }
@@ -273,9 +265,14 @@ header {
         display: inline-block;
       }
 
+      &.hide-download-png.hide-permalink .download-svg:after,
+      &.hide-permalink .download-png:after {
+        display: none;
+      }
+
       &.hide-permalink .permalink,
-      &.hide-permalink .download::after,
-      &.hide-download .download {
+      &.hide-download-svg .download-svg,
+      &.hide-download-png .download-png {
         display: none;
       }
     }
@@ -299,16 +296,16 @@ header {
   margin: rhythm(1) auto;
 
   div {
-    @include linear-gradient(-45deg, $green 25%, $light-green 25%, $light-green 50%, $green 50%, $green 75%, $light-green 75%, $light-green 100%);
+    background: $green;
+    background: linear-gradient(135deg, $green 25%, $light-green 25%, $light-green 50%, $green 50%, $green 75%, $light-green 75%, $light-green 100%);
     background-size: rhythm(2) rhythm(2);
     background-repeat: repeat-x;
     height: 100%;
-
-    @include animation(progress 1.0s infinite linear);
+    animation: progress 1s infinite linear
   }
 }
 
-@include keyframes(progress) {
+@keyframes progress {
   0% { background-position-x: rhythm(2); }
   100% { background-position-x: 0; }
 }
