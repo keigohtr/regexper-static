@@ -23,7 +23,7 @@ describe('parser/javascript/subexp.js', function() {
       regexp: jasmine.objectContaining({ textValue: 'test' }),
       proxy: jasmine.objectContaining({ textValue: 'test' })
     },
-    '(?<name>test)': {
+    '(?P<name>test)': {
       regexp: jasmine.objectContaining({ textValue: 'test' })
     }
   }, (content, str) => {
@@ -110,7 +110,7 @@ describe('parser/javascript/subexp.js', function() {
         label: '',
         groupCounter: 1
       },
-      '(?<name>test)': {
+      '(?P<name>test)': {
         label: 'group \'name\'',
         groupCounter: 1
       }
